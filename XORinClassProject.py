@@ -53,3 +53,27 @@ def XORonSentence(sentence, key):
         encryptedSentence += XORonLetter(sentence[i],key[i])
 
     return encryptedSentence
+
+def generateKey (message, key):
+
+    if len(message) == len(key):
+        return key
+
+    elif len(message) < len(key):
+        return key[0:len(message)]
+
+    else:
+        tempKey = ""
+
+        repititions =math.floor(len(message)/len(key))
+        remainder = len(message) % len(key)
+
+        for i in range(repititions):
+            tempKey += key
+        
+        tempKey += key[0:remainder]
+
+        return tempKey
+
+message = input("Please enter the message that you either wish to encrypt or decrypt.")
+key = input("Please enter the key")
